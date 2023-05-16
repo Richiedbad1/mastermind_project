@@ -1,0 +1,17 @@
+---
+- hosts: rich
+  gather_facts: no
+  become: yes
+  tasks:
+
+    - name: Create 4 users using a loop
+      user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      loop:
+        - { name: 'James', groups: 'root' }
+        - { name: 'Amaka', groups: 'root' }
+        - { name: 'Joy', groups: 'root' }
+        - { name: 'topcloudg', groups: 'root' }
+

@@ -1,0 +1,61 @@
+- hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: update repo
+      package:
+        update_cache: yes
+    
+    - name: Create a default user
+      user: 
+        name: default
+        groups: root
+
+    - name: add key to user
+      authorized_key:
+        user: default
+        key: ""
+
+    - name: add user to sudoers to escalate permissions
+      copy:
+        src: xxy
+        dest: /etc/sudoers.d/default
+        owner: root
+        group: root
+        mode: 0440
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: install apache/httpd on servers
+      package:
+        name:
+          - "{{ apache }}"
+          - "{{ httpd }}"
+        state: latest
+        update_cache: yes
+
+    - name: ensure apache service is started
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_distribution == "ubuntu"
+
+    - name: ensure httpd service is started
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "centos"
+
+    - name: copy local file to servers
+      copy:
+        src: default.html
+        dest: var/www/html/index.html
+        owner: root
+        groups: root
+        mode: 0644
+        
+
+    

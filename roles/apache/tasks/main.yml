@@ -1,0 +1,7 @@
+- name: install apache/httpd on servers
+  package:
+    name:
+      - "{{ apache }}"
+      - "{{ httpd }}"
+    state: latest
+    update_cache: yes

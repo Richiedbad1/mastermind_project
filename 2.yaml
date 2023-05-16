@@ -1,0 +1,39 @@
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: install nginx in ubuntu servers
+      apt:
+        name: nginx
+        state: latest
+
+    - name: ensure nginx service is started
+      service:
+        name: nginx
+        enabled: yes
+        state: started
+
+- hosts: centos
+  become: yes
+  tasks:
+    - name: install apache on centos servers
+      dnf:
+        name: httpd
+        state: latest
+
+    - name: ensure apache service is started
+      service:
+        name: httpd
+        enabled: yes
+        state: started
+
+- hosts: parent
+  gather_facts: no
+  become: yes
+  pre_tasks:
+    - name: Install php and update repo
+      package:
+        name: 
+          - "{{ libapache2-mod-php }}"
+          - "{{ php }}"
+        state: latest
+        update_cache: yes
