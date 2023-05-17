@@ -1,0 +1,13 @@
+- name: install unzip
+  package:
+    name: unzip
+
+- name: Install TF
+  unarchive:
+    src: https//
+    dest: usr/local/bin
+    remote_src: yes
+    mode: 0755
+    owner: root
+    group: root
+

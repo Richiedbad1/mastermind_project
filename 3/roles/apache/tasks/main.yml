@@ -5,3 +5,4 @@
       - "{{ httpd }}"
     state: latest
     update_cache: yes
+    notify: restart_apache

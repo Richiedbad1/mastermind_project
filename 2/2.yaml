@@ -1,3 +1,15 @@
+- hosts: parent
+  gather_facts: no
+  become: yes
+  pre_tasks:
+    - name: Install php and update repo
+      package:
+        name: 
+          - "{{ ubuntu_php }}"
+          - "{{ centos_php }}"
+        state: latest
+        update_cache: yes
+
 - hosts: webserver
   become: yes
   tasks:
@@ -25,15 +37,3 @@
         name: httpd
         enabled: yes
         state: started
-
-- hosts: parent
-  gather_facts: no
-  become: yes
-  pre_tasks:
-    - name: Install php and update repo
-      package:
-        name: 
-          - "{{ libapache2-mod-php }}"
-          - "{{ php }}"
-        state: latest
-        update_cache: yes

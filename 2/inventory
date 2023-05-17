@@ -1,0 +1,5 @@
+[webservers]
+ubuntu_php=libapache2-mod-php
+[centos]
+centos_php=php
+[parent]

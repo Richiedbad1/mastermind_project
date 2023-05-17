@@ -1,0 +1,26 @@
+---
+- hosts: all
+  gather_facts: no
+  become: true
+  tasks:
+    - name: update index repo
+      package:
+        update_cache: yes
+
+- hosts: all
+  gather_facts: no
+  become: true
+  roles:
+    - apache
+
+- hosts: all
+  gather_facts: no
+  become: true
+  roles:
+    - docker
+
+- hosts: all
+  gather_facts: no
+  become: true
+  roles:
+    - terraform
