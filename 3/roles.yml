@@ -7,19 +7,19 @@
       package:
         update_cache: yes
 
-- hosts: all
+- hosts: apache
   gather_facts: no
   become: true
   roles:
     - apache
 
-- hosts: all
+- hosts: docker
   gather_facts: no
   become: true
   roles:
     - docker
 
-- hosts: all
+- hosts: tf
   gather_facts: no
   become: true
   roles:

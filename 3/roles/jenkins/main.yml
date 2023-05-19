@@ -1,0 +1,29 @@
+- name: update repo
+  package:
+    update_cache: yes
+- name: Download Long Term Jenkins release
+    get_url:
+      url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Install java
+  package:
+    name: java-11-openjdk-devel
+    state: present
+
+- name: Install jenkins
+  package:
+    name: jenkins
+    state: latest
+
+- name: Start jenkins service
+  service:
+    name: jenkins
+    enabled: true
+    state: started
+
+- name: open port 8080 
+  ansible.posix.firewalld:
+    port: 8080
+    permanent: true
+    state: enabled

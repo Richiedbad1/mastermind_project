@@ -6,3 +6,11 @@
     state: latest
     update_cache: yes
     notify: restart_apache
+    
+- name: copy local file to servers
+  copy:
+    src: default.html
+    dest: /var/www/html/index.html
+    owner: root
+    groups: root
+    mode: 0644

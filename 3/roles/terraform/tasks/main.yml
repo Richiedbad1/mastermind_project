@@ -4,8 +4,8 @@
 
 - name: Install TF
   unarchive:
-    src: https//
-    dest: usr/local/bin
+    src: https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip
+    dest: /usr/local/bin
     remote_src: yes
     mode: 0755
     owner: root
