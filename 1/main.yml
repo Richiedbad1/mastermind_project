@@ -31,7 +31,6 @@
       package:
         name:
           - "{{ apache }}"
-          - "{{ httpd }}"
         state: latest
         update_cache: yes
 
@@ -40,19 +39,19 @@
         name: apache2
         state: started
         enabled: yes
-      when: ansible_distribution == "ubuntu"
+      when: ansible_distribution == "Ubuntu"
 
     - name: ensure httpd service is started
       service:
         name: httpd
         state: started
         enabled: yes
-      when: ansible_distribution == "centos"
+      when: ansible_distribution == "CentOS"
 
     - name: copy local file to servers
       copy:
         src: default.html
-        dest: var/www/html/index.html
+        dest: /var/www/html/index.html
         owner: root
         groups: root
         mode: 0644
