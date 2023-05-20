@@ -1,6 +1,6 @@
-## Instaling Apache and starting services in different servers using Ansible playbook
+# Installing Apache and starting services in different servers using Ansible playbook
 
-- First ensure the servers are properly set up and connected to the control node.
+### First ensure the servers are properly set up and connected to the control node.
 
 - Generate ssh key on control node to ensure more secure connection. we specify the type (-t) as ed25519 and named the key(-C) "ansible". You can name it whatever you want but we used "ansible" here
 ```
@@ -16,7 +16,7 @@ cat ~/.ssh/ansible.pub | ssh root@ip_address_of_remote_server "cat - >> ~/.ssh/a
 ssh -i ~/.ssh/ansible.pub user@ip_address
  ```
 
-# TASK 1
+# MAIN TASK
  - Install ansible on control node:
  ```
  - N.B: we are using an EC2 instance as a control node and digital ocean droplets as remote servers
