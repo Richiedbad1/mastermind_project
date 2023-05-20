@@ -1,12 +1,11 @@
 - name: install apache/httpd on servers
   package:
     name:
-      - "{{ apache }}"
-      - "{{ httpd }}"
+      - apache2
     state: latest
     update_cache: yes
     notify: restart_apache
-    
+
 - name: copy local file to servers
   copy:
     src: default.html

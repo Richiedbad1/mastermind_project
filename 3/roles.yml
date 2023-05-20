@@ -7,20 +7,26 @@
       package:
         update_cache: yes
 
-- hosts: apache
+- hosts: Apache
   gather_facts: no
   become: true
   roles:
-    - apache
+    - Apache
 
-- hosts: docker
+- hosts: Docker
   gather_facts: no
   become: true
   roles:
-    - docker
+    - Docker
 
-- hosts: tf
+- hosts: Terraform
   gather_facts: no
   become: true
   roles:
-    - terraform
+    - Terraform
+
+- hosts: Jenkins
+  gather_facts: no
+  become: true
+  roles:
+    - Jenkins
