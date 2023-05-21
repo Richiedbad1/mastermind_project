@@ -18,8 +18,9 @@ ssh -i ~/.ssh/ansible.pub user@ip_address
 
 # MAIN TASK
  - Install ansible on control node:
- ```
+
  - N.B: we are using an EC2 instance as a control node and digital ocean droplets as remote servers
+ ```
 sudo apt update, sudo apt install ansible
  ```
 - Create an inventory file to host remote servers' ip addresses
